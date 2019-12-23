@@ -13,12 +13,12 @@ import (
 // unknown = something went wrong
 
 func main() {
-	//rund2p1()
-	//d2p1runTestCases()
-	rund2p2()
+	//runPuzzle1()
+	//runTestCasesPuzzle1()
+	runPuzzle2()
 }
 
-func rund2p1() {
+func runPuzzle1() {
 	list := toIntList(getListFromFile("2019/Day2/puzzle_input.txt"))
 	final := calculateNewState(list)
 	fmt.Printf("%v", final)
@@ -80,14 +80,14 @@ func toIntList(stringList []string) []int {
 
 // testing
 
-func d2p1TestCase(initialState, expectedFinalState []int) {
+func puzzle1TestCase(initialState, expectedFinalState []int) {
 	finalState := calculateNewState(initialState)
 	fmt.Printf("   final: %v \nexpected: %v\n\n", finalState, expectedFinalState)
 }
 
-func d2p1runTestCases() {
-	d2p1TestCase([]int{1, 0, 0, 0, 99}, []int{2, 0, 0, 0, 99})
-	d2p1TestCase([]int{2, 3, 0, 3, 99}, []int{2, 3, 0, 6, 99})
-	d2p1TestCase([]int{2, 4, 4, 5, 99, 0}, []int{2, 4, 4, 5, 99, 9801})
-	d2p1TestCase([]int{1, 1, 1, 4, 99, 5, 6, 0, 99}, []int{30, 1, 1, 4, 2, 5, 6, 0, 99})
+func runTestCasesPuzzle1() {
+	puzzle1TestCase([]int{1, 0, 0, 0, 99}, []int{2, 0, 0, 0, 99})
+	puzzle1TestCase([]int{2, 3, 0, 3, 99}, []int{2, 3, 0, 6, 99})
+	puzzle1TestCase([]int{2, 4, 4, 5, 99, 0}, []int{2, 4, 4, 5, 99, 9801})
+	puzzle1TestCase([]int{1, 1, 1, 4, 99, 5, 6, 0, 99}, []int{30, 1, 1, 4, 2, 5, 6, 0, 99})
 }

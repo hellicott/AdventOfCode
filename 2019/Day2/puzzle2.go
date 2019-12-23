@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func rund2p2() {
+func runPuzzle2() {
 Loop:
 	for noun := 0; noun <= 99; noun++ {
 		for verb := 0; verb <= 99; verb++ {

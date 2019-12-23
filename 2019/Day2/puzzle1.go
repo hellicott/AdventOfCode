@@ -12,14 +12,57 @@ import (
 // 99 = finish program
 // unknown = something went wrong
 
-func calculateNewState(initialState []int) []int {
-	return []int{}
+func main() {
+	rund2p1()
+	//d2p1runTestCases()
+}
+
+func rund2p1() {
+	list := toIntList(getListFromFile("2019/Day2/puzzle_input.txt"))
+	final := calculateNewState(list)
+	fmt.Printf("%v", final)
+}
+
+func calculateNewState(state []int) []int {
+	maxPointer := len(state)
+	pointer := 0
+	for pointer < maxPointer {
+		fmt.Printf("POINTER: %d\n", pointer)
+		opcode := state[pointer]
+		if opcode == 99 {
+			fmt.Printf("Found opcode %d\n", opcode)
+			break
+		}
+		num1 := state[pointer+1]
+		num2 := state[pointer+2]
+		output := state[pointer+3]
+		state = handleOpcode(opcode, num1, num2, output, state)
+		pointer += 4
+	}
+	return state
+}
+
+func handleOpcode(opcode, num1, num2, output int, state []int) []int {
+	if opcode == 1 {
+		fmt.Printf("state[%d] = state[%d] (%d) + state[%d] (%d) \n", output, num1, state[num1], num2, state[num2])
+		state[output] = state[num1] + state[num2]
+		fmt.Printf("RESULT: %d \n---\n", state[output])
+
+	} else if opcode == 2 {
+		fmt.Printf("state[%d] = state[%d] (%d) * state[%d] (%d) \n", output, num1, state[num1], num2, state[num2])
+		state[output] = state[num1] * state[num2]
+		fmt.Printf("RESULT: %d \n---\n", state[output])
+	} else {
+		fmt.Printf("Something Went Wrong :( got opcode %d\n", opcode)
+	}
+	return state
 }
 
 func getListFromFile(inputFile string) []string {
 	file, _ := os.Open(inputFile)
 	reader := csv.NewReader(file)
 	initialList, _ := reader.Read()
+	fmt.Printf("str: %v\n", initialList)
 	return initialList
 }
 
@@ -29,6 +72,7 @@ func toIntList(stringList []string) []int {
 		num, _ := strconv.Atoi(stringList[value])
 		intList = append(intList, num)
 	}
+	fmt.Printf("int: %v\n", intList)
 	return intList
 }
 
@@ -36,7 +80,7 @@ func toIntList(stringList []string) []int {
 
 func d2p1TestCase(initialState, expectedFinalState []int) {
 	finalState := calculateNewState(initialState)
-	fmt.Printf("initial: %v \n   final: %v \nexpected: %v", initialState, finalState, expectedFinalState)
+	fmt.Printf("   final: %v \nexpected: %v\n\n", finalState, expectedFinalState)
 }
 
 func d2p1runTestCases() {

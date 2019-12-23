@@ -7,8 +7,10 @@ import (
 )
 
 func main() {
-	runPuzzle1()
+	//runPuzzle1()
 	//runTestCasesPuzzle1()
+	runPuzzle2()
+	//runTestCasesPuzzle2()
 }
 
 func runPuzzle1() {
@@ -20,9 +22,9 @@ func runPuzzle1() {
 	fmt.Printf("Min distance: %d", min)
 }
 
-func findMin(distances []int) int {
-	min := distances[1]
-	for _, dist := range distances[1:] {
+func findMin(nums []int) int {
+	min := nums[1]
+	for _, dist := range nums[1:] {
 		if dist < min && dist != 0 {
 			min = dist
 		}

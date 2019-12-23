@@ -9,9 +9,9 @@ import (
 )
 
 func main() {
-	//d1p1RunTestCases()
+	//runTestCasesPuzzle1()
 	//processFile("2019/Day1/puzzle1_input.txt")
-	//d1p2RunTestCases()
+	//runTestCasesPuzzle2()
 	totalFuel("2019/Day1/puzzle1_input.txt")
 }
 
@@ -34,15 +34,15 @@ func calculateRequiredFuel(mass int) int {
 
 // Testing
 
-func d1p1testCase(mass, expectedFuel int) {
+func puzzle1TestCase(mass, expectedFuel int) {
 	fuel := calculateRequiredFuel(mass)
 	correct := fuel == expectedFuel
 	fmt.Printf("%t | mass = %d, fuel = %d, expected = %d \n", correct, mass, fuel, expectedFuel)
 }
 
-func d1p1RunTestCases() {
-	d1p1testCase(12, 2)
-	d1p1testCase(14, 2)
-	d1p1testCase(1969, 654)
-	d1p1testCase(100756, 33583)
+func runTestCasesPuzzle1() {
+	puzzle1TestCase(12, 2)
+	puzzle1TestCase(14, 2)
+	puzzle1TestCase(1969, 654)
+	puzzle1TestCase(100756, 33583)
 }

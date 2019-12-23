@@ -29,14 +29,14 @@ func calculateAdditionalFuel(fuel int) int {
 	}
 }
 
-func d1p2testCase(startingFuel, expectedAdditionalFuel int) {
+func puzzle2TestCase(startingFuel, expectedAdditionalFuel int) {
 	fuel := calculateAdditionalFuel(startingFuel)
 	correct := fuel == expectedAdditionalFuel
 	fmt.Printf("%t | starting = %d, additional = %d, expected = %d \n", correct, startingFuel, fuel, expectedAdditionalFuel)
 }
 
-func d1p2RunTestCases() {
-	d1p2testCase(2, 0)
-	d1p2testCase(654, 312)
-	d1p2testCase(33583, 16763)
+func runTestCasesPuzzle2() {
+	puzzle2TestCase(2, 0)
+	puzzle2TestCase(654, 312)
+	puzzle2TestCase(33583, 16763)
 }

@@ -13,8 +13,9 @@ import (
 // unknown = something went wrong
 
 func main() {
-	rund2p1()
+	//rund2p1()
 	//d2p1runTestCases()
+	rund2p2()
 }
 
 func rund2p1() {
@@ -24,6 +25,7 @@ func rund2p1() {
 }
 
 func calculateNewState(state []int) []int {
+	fmt.Printf("new: %v", state)
 	maxPointer := len(state)
 	pointer := 0
 	for pointer < maxPointer {

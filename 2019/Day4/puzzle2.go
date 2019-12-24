@@ -14,7 +14,7 @@ func findPossiblePasswordsPuzzle2(min, max int) []int {
 	for i := 0; i < len(possPasswords); i++ {
 		password := possPasswords[i]
 		digits := toList(password)
-		if evenGroupings(getGroupings(digits)) {
+		if pairNotPartOfLargerGrouping(getGroupings(digits)) {
 			newPossPasswords = append(newPossPasswords, password)
 		}
 	}
@@ -22,16 +22,15 @@ func findPossiblePasswordsPuzzle2(min, max int) []int {
 	return newPossPasswords
 }
 
-func evenGroupings(groupings []int) bool {
+func pairNotPartOfLargerGrouping(groupings []int) bool {
 	fmt.Printf("groupings: %v\n", groupings)
 	for i := 0; i < len(groupings); i++ {
 		group := groupings[i]
-		if group == 3 || group == 5 {
-			fmt.Printf("false because group %d \n", group)
-			return false
+		if group == 2 {
+			return true
 		}
 	}
-	return true
+	return false
 }
 
 func getGroupings(nums []int) []int {
